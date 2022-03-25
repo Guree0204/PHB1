@@ -2,17 +2,17 @@ package Lab2;
 
 import java.util.Scanner;
 
-public class MyQueue {
+public class MyQueue<E> {
 	int front, rear;
 	int size;
 	int capacity;
-	int array[];
+	E[] array;
 
 	public MyQueue(int capacity) {
 		this.capacity = capacity;
 		front = this.size = 0;
 		rear = capacity - 1;
-		array = new int[this.capacity];
+		array = (E[])new Object[this.capacity];
 	}
 
 // size capacity tentseh uyd queue duurne
@@ -26,7 +26,7 @@ public class MyQueue {
 	}
 
 // daraalald utga oruulah
-	void enqueue(int item) {
+	void enqueue(E item) {
 		if (isFull(this))
 			return;
 		this.rear = (this.rear + 1) % this.capacity;
@@ -40,7 +40,7 @@ public class MyQueue {
 		if (isEmpty(this))
 			return Integer.MIN_VALUE;
 
-		int item = this.array[this.front];
+		int item = (int) this.array[this.front];
 		this.front = (this.front + 1) % this.capacity;
 		this.size = this.size - 1;
 		return item;
@@ -51,7 +51,7 @@ public class MyQueue {
 		if (isEmpty(this))
 			return Integer.MIN_VALUE;
 
-		return this.array[this.front];
+		return (int)this.array[this.front];
 	}
 
 // daraalliin hamgiin ard taliin utgiig awah
@@ -59,7 +59,7 @@ public class MyQueue {
 		if (isEmpty(this))
 			return Integer.MIN_VALUE;
 
-		return this.array[this.rear];
+		return (int)this.array[this.rear];
 	}
 
 }
